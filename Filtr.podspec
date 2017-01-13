@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Filtr"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "Swift framework for photo filter effects on iOS/macOS/tvOS."
   s.description  = <<-DESC
   Photo effects framework based on Core Image, using 3D LUT images to create filter effects.
