@@ -21,6 +21,7 @@ public enum EffectFilterType: String {
                                                         .blackWhite1, .blackWhite2, .blackWhite3, .blackWhite4, .blackWhite5]
 
     case none
+    case custom
     case color1
     case color2
     case color3
@@ -46,12 +47,16 @@ public enum EffectFilterType: String {
     case blackWhite3
     case blackWhite4
     case blackWhite5
-    
+
     public var filter: EffectFilter {
         return EffectFilter(type: self)
     }
     
     var dataPath: String? {
+        guard self != .none, self != .custom else {
+            return nil
+        }
+        
         return bundle.path(forResource: self.rawValue, ofType: "fcube")
     }
     

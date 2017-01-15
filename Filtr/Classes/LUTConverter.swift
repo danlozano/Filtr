@@ -37,21 +37,22 @@ public struct LUTConverter {
     }
     
     #else
-    
-    public static func cubeDataForLut64(lutImage: UIImage) -> Data? {
-        guard let lutCgImage = ImageConverter.CGImageFrom(uiImage: lutImage) else {
-            return nil
-        }
 
-        return cubeDataForLut64(lutCgImage)
-    }
-    
+
     public static func cubeDataForLut32(lutImage: UIImage) -> Data? {
         guard let lutCgImage = ImageConverter.CGImageFrom(uiImage: lutImage) else {
             return nil
         }
 
         return cubeDataForLut32(lutCgImage)
+    }
+
+    public static func cubeDataForLut64(lutImage: UIImage) -> Data? {
+        guard let lutCgImage = ImageConverter.CGImageFrom(uiImage: lutImage) else {
+            return nil
+        }
+
+        return cubeDataForLut64(lutCgImage)
     }
     
     #endif

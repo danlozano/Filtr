@@ -21,9 +21,10 @@ class ViewController: NSViewController {
         
         let filterImage = EffectFilterType.color2.thumbnail
         filterView.image = filterImage
-        
+
+        testCustomFilter()
         //filter()
-        filterMultipleTest()
+        //filterMultipleTest()
         //createfcube()
         //createFcubes()
         //transformLuts()
@@ -118,14 +119,14 @@ class ViewController: NSViewController {
         
         for effect in EffectFilterType.allFilters {
 
-            let fileName = effect.temporaryFileName ?? "none"
+            let fileName = effect.rawValue
             print("PROCESSING FILTER = \(fileName)")
 
             let effectFilter = effect.filter
             effectFilter.inputIntensity = 1.0
 
-            let fadeFilter = FadeFilter()
-            fadeFilter.intensity = 0.33
+            // let fadeFilter = FadeFilter()
+            // fadeFilter.intensity = 0.33
 
             let filterStack = FilterStack()
             filterStack.effectFilter = effectFilter
@@ -143,49 +144,72 @@ class ViewController: NSViewController {
 
     func filter(){
         
-        let imagePath = Constants.documentsDirectory.stringByAppendingPathComponent("filtr/orig2.jpg")
-        let inputImage = NSImage(contentsOfFile: imagePath)!
-        let inputCiImage = ImageConverter.CIImageFrom(inputImage)
-        
-        let lutPath = Constants.documentsDirectory.stringByAppendingPathComponent("filtr/strange32.tif")
-        let lutImage = NSImage(contentsOfFile: lutPath)!
-        let lutData = LUTConverter.cubeDataForLut32(lutImage)
-//        let lutData = LUTConverter.cubeDataForLut64(lutImage)
-//        let interpolatedLutData = LUTConverter.dataInterpolatedWithIdentity(lutData: lutData,
-//                                                                            lutDimension: 32,
-//                                                                            intensity: 0.5)
-        
-        let colorCubeFilter = CIFilter(name: "CIColorCubeWithColorSpace")!
-        colorCubeFilter.setValue(lutData, forKey: "inputCubeData")
-        colorCubeFilter.setValue(32, forKey: "inputCubeDimension")
-        colorCubeFilter.setValue(CGColorSpaceCreateDeviceRGB(), forKey: "inputColorSpace")
-        colorCubeFilter.setValue(inputCiImage, forKey: kCIInputImageKey)
+//        let imagePath = Constants.documentsDirectory.stringByAppendingPathComponent("filtr/orig2.jpg")
+//        let inputImage = NSImage(contentsOfFile: imagePath)!
+//        let inputCiImage = ImageConverter.CIImageFrom(inputImage)
+//        
+//        let lutPath = Constants.documentsDirectory.stringByAppendingPathComponent("filtr/strange32.tif")
+//        let lutImage = NSImage(contentsOfFile: lutPath)!
+//        let lutData = LUTConverter.cubeDataForLut32(lutImage)
+////        let lutData = LUTConverter.cubeDataForLut64(lutImage)
+////        let interpolatedLutData = LUTConverter.dataInterpolatedWithIdentity(lutData: lutData,
+////                                                                            lutDimension: 32,
+////                                                                            intensity: 0.5)
+//        
+//        let colorCubeFilter = CIFilter(name: "CIColorCubeWithColorSpace")!
+//        colorCubeFilter.setValue(lutData, forKey: "inputCubeData")
+//        colorCubeFilter.setValue(32, forKey: "inputCubeDimension")
+//        colorCubeFilter.setValue(CGColorSpaceCreateDeviceRGB(), forKey: "inputColorSpace")
+//        colorCubeFilter.setValue(inputCiImage, forKey: kCIInputImageKey)
+//
+//        let filteredImage = ImageConverter.NSImageFrom(colorCubeFilter.outputImage!)
+//                
+//        let jpegData = ImageConverter.imageDataFrom(filteredImage, compression: 1.0, type: .JPEG)!
+//        let path = Constants.documentsDirectory.stringByAppendingPathComponent("filtr/edited.jpg")
+//        try? jpegData.write(to: URL(fileURLWithPath: path), options: .atomic)
 
-        let filteredImage = ImageConverter.NSImageFrom(colorCubeFilter.outputImage!)
-                
-        let jpegData = ImageConverter.imageDataFrom(filteredImage, compression: 1.0, type: .JPEG)!
-        let path = Constants.documentsDirectory.stringByAppendingPathComponent("filtr/edited.jpg")
-        try? jpegData.write(to: URL(fileURLWithPath: path), options: .atomic)
-        
         // THIS IS THE CORRECT
         
-//        let effectFilter = EffectFilterType.color1.filter
-//        effectFilter.inputIntensity = 1.0
-//        
-//        let fadeFilter = FadeFilter()
-//        fadeFilter.intensity = 0.33
-//        
-//        let filterStack = FilterStack()
-//        filterStack.effectFilter = effectFilter
-//        //filterStack.fadeFilter = fadeFilter
-//        
-//        let filteredImage = Filtr.process(image, filterStack: filterStack)!
-//        
-//        // CREATE JPEG DATA
-//        
-//        let jpegData = ImageConverter.imageDataFrom(filteredImage, compression: 1.0, type: .NSJPEGFileType)!
-//        jpegData.writeToFile(Constants.documentsDirectory.stringByAppendingPathComponent("filtr/tests/edited.jpg"), atomically: true)
+        let effectFilter = EffectFilter(type: .color1)
+        effectFilter.inputIntensity = 1.0
         
+        // let fadeFilter = FadeFilter()
+        // fadeFilter.intensity = 0.33
+        
+        let filterStack = FilterStack()
+        filterStack.effectFilter = effectFilter
+        //filterStack.fadeFilter = fadeFilter
+
+        let imagePath = Constants.documentsDirectory.stringByAppendingPathComponent("filtr/orig4.jpg")
+        let inputImage = NSImage(contentsOfFile: imagePath)!
+        let filteredImage = Filtr.process(inputImage, filterStack: filterStack)!
+
+        // CREATE JPEG DATA
+        
+        let jpegData = ImageConverter.imageDataFrom(filteredImage, compression: 1.0, type: .JPEG)!
+        let path = Constants.documentsDirectory.stringByAppendingPathComponent("filtr/tests/edited.jpg")
+        let url = URL(fileURLWithPath: path)
+        try? jpegData.write(to: url, options: .atomic)
+    }
+
+    func testCustomFilter() {
+        let lutPath = Constants.documentsDirectory.stringByAppendingPathComponent("filtr/otherluts/Z32.tif")
+        let lutImage = NSImage(contentsOfFile: lutPath)!
+        let lutData = LUTConverter.cubeDataForLut32(lutImage)!
+
+        let effectFilter = EffectFilter(customFilter: lutData, withDimension: .thirtyTwo)
+        let filterStack = FilterStack()
+        filterStack.effectFilter = effectFilter
+
+        let imagePath = Constants.documentsDirectory.stringByAppendingPathComponent("filtr/orig4.jpg")
+        let inputImage = NSImage(contentsOfFile: imagePath)!
+        let filteredImage = Filtr.process(inputImage, filterStack: filterStack)!
+
+        let jpegData = ImageConverter.imageDataFrom(filteredImage, compression: 1.0, type: .JPEG)!
+        let path = Constants.documentsDirectory.stringByAppendingPathComponent("filtr/tests/edited.jpg")
+        let url = URL(fileURLWithPath: path)
+        try? jpegData.write(to: url, options: .atomic)
+
     }
 
 }
