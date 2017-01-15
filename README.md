@@ -23,9 +23,9 @@ pod "Filtr"
 
 There are 25 built in filters. 10 crazy color ones, 10 extra regular filters, 5 black and white.
 
-**color1** to **color10** <br>
-**extra1** to **extra10** <br>
-**blackWhite1** to **blackWhite5** <br>
+**color1** - **color10** <br>
+**extra1** - **extra10** <br>
+**blackWhite1** - **blackWhite5** <br>
 
 This is how you would use one.
 
