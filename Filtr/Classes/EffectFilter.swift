@@ -9,14 +9,18 @@
 import Foundation
 import CoreImage
 
+public enum CubeDimension: Int {
+
+    case thirtyTwo = 32
+    case sixtyFour = 64
+
+}
+
 public class EffectFilter: CIFilter {
     
     // MARK: - Properties
     
-    // TODO: Be able to change type, to re-use filter?
     public let type: EffectFilterType
-
-    private let cubeDimension = 32
 
     public var inputImage: CIImage?
 
@@ -26,25 +30,24 @@ public class EffectFilter: CIFilter {
         }
     }
 
-    private lazy var colorCubeData: Data! = {
-        guard let dataPath = self.type.dataPath, let lutData = try? Data(contentsOf: URL(fileURLWithPath: dataPath)) else {
-            return  Data() // nil ?
-        }
+    private var cubeDimension: CubeDimension = .thirtyTwo
 
-        let data: Data?
-        if self.inputIntensity == 0{
-            data = nil
-        }else if self.inputIntensity == 1.0{
-            data = lutData
-        }else{
-            data = LUTConverter.dataInterpolatedWithIdentity(lutData: lutData, lutDimension: self.cubeDimension, intensity: self.inputIntensity)
-        }
+    private lazy var colorCubeData: Data! = {
+        let data = self.getColorCubeData()
         return data
     }()
 
+    private var customCubeData: Data?
 
     // MARK: - Init
-    
+
+    public init(customFilter: Data, withDimension dimension: CubeDimension) {
+        type = .custom
+        customCubeData = customFilter
+        cubeDimension = dimension
+        super.init()
+    }
+
     public init(type: EffectFilterType) {
         self.type = type
         super.init()
@@ -61,44 +64,65 @@ public class EffectFilter: CIFilter {
         guard let inputImage = inputImage else {
             return nil
         }
-        
-        guard type != .none, let colorCubeData = colorCubeData else {
+
+        guard type != .none else {
+            return inputImage
+        }
+
+        guard let colorCubeData = colorCubeData else {
             return inputImage
         }
         
         let colorCubeFilter = CIFilter(name: "CIColorCubeWithColorSpace")
         colorCubeFilter?.setValue(colorCubeData, forKey: "inputCubeData")
-        colorCubeFilter?.setValue(cubeDimension, forKey: "inputCubeDimension")
+        colorCubeFilter?.setValue(cubeDimension.rawValue, forKey: "inputCubeDimension")
         colorCubeFilter?.setValue(inputImage, forKey: kCIInputImageKey)
 
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         colorCubeFilter?.setValue(colorSpace, forKey: "inputColorSpace")
         
-        guard let outputImage = colorCubeFilter?.outputImage else {
+        guard let image = colorCubeFilter?.outputImage else {
             return inputImage
         }
         
-        return outputImage
+        return image
     }
     
     // MARK: - Color Cube Helper
     
-//    fileprivate func colorCubeDataForCurrentType() -> Data? {
-//        guard let dataPath = type.dataPath, let lutData = try? Data(contentsOf: URL(fileURLWithPath: dataPath)) else {
-//            return  nil
-//        }
-//        
-//        let data: Data?
-//        
-//        if inputIntensity == 0{
-//            data = nil
-//        }else if inputIntensity == 1.0{
-//            data = lutData
-//        }else{
-//            data = LUTConverter.dataInterpolatedWithIdentity(lutData: lutData, lutDimension: cubeDimension, intensity: inputIntensity)
-//        }
-//        
-//        return data
-//    }
-    
+    private func getColorCubeData() -> Data? {
+        guard type != .none else {
+            return nil
+        }
+
+        guard type != .custom else {
+            if let data = customCubeData {
+                return dataWithIntensity(data)
+            } else {
+                return nil
+            }
+        }
+
+        guard let dataPath = type.dataPath,
+            let lutData = try? Data(contentsOf: URL(fileURLWithPath: dataPath)) else {
+            return  nil
+        }
+
+        return dataWithIntensity(lutData)
+    }
+
+    private func dataWithIntensity(_ data: Data) -> Data? {
+        let interpolatedData: Data?
+        if self.inputIntensity == 0 {
+            interpolatedData = nil
+        } else if self.inputIntensity == 1.0 {
+            interpolatedData = data
+        } else {
+            interpolatedData = LUTConverter.dataInterpolatedWithIdentity(lutData: data,
+                                                                 lutDimension: self.cubeDimension.rawValue,
+                                                                    intensity: self.inputIntensity)
+        }
+        return interpolatedData
+    }
+
 }

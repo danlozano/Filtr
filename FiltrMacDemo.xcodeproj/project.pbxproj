@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		063DFA831E2B077200FB4F13 /* Filtr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 063DFA821E2B077200FB4F13 /* Filtr.framework */; };
+		063DFAB71E2B09D900FB4F13 /* Filtr.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 063DFA821E2B077200FB4F13 /* Filtr.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		069A107B1D1CAB5B00357319 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069A107A1D1CAB5B00357319 /* AppDelegate.swift */; };
 		069A107D1D1CAB5B00357319 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069A107C1D1CAB5B00357319 /* ViewController.swift */; };
 		069A107F1D1CAB5B00357319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 069A107E1D1CAB5B00357319 /* Assets.xcassets */; };
 		069A10821D1CAB5B00357319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 069A10801D1CAB5B00357319 /* Main.storyboard */; };
-		06CA12531D1CAD2D005AF03F /* Filtr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CA12521D1CAD2D005AF03F /* Filtr.framework */; };
-		06CA12541D1CAD2D005AF03F /* Filtr.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06CA12521D1CAD2D005AF03F /* Filtr.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -22,7 +22,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				06CA12541D1CAD2D005AF03F /* Filtr.framework in Embed Frameworks */,
+				063DFAB71E2B09D900FB4F13 /* Filtr.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -30,13 +30,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		063DFA821E2B077200FB4F13 /* Filtr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Filtr.framework; sourceTree = "<group>"; };
 		069A10771D1CAB5B00357319 /* FiltrMacDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiltrMacDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		069A107A1D1CAB5B00357319 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		069A107C1D1CAB5B00357319 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		069A107E1D1CAB5B00357319 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		069A10811D1CAB5B00357319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		069A10831D1CAB5B00357319 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		06CA12521D1CAD2D005AF03F /* Filtr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Filtr.framework; path = "/Users/danlozano/Library/Developer/Xcode/DerivedData/Filtr-cukmckpgkwvluogzedkxurxlryqw/Build/Products/Debug/Filtr.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06CA12531D1CAD2D005AF03F /* Filtr.framework in Frameworks */,
+				063DFA831E2B077200FB4F13 /* Filtr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,9 +54,9 @@
 		069A106E1D1CAB5B00357319 = {
 			isa = PBXGroup;
 			children = (
+				063DFA821E2B077200FB4F13 /* Filtr.framework */,
 				069A10791D1CAB5B00357319 /* FiltrMacDemo */,
 				069A10781D1CAB5B00357319 /* Products */,
-				06CA12521D1CAD2D005AF03F /* Filtr.framework */,
 			);
 			sourceTree = "<group>";
 		};
