@@ -72,7 +72,7 @@ Then use your 3D LUT data to initialize a EffectFilter.
 
 ```swift
 let effectFilter = EffectFilter(customFilter: lutData32, withDimension: .thirtyTwo)
-effectFilter.inputIntensity = 0.7 // Changing the filter intensity currently only works with 32 dimension LUT's.
+effectFilter.inputIntensity = 0.7
 ```
 
 ## Author
