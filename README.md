@@ -6,7 +6,7 @@
 
 Filtr is a Swift multi-platform (iOS/macOS/tvOS) framework that has 25 built in photo filter effects that you can apply to images in your app. It also has utilities that let you create your own filters with your favorite photo editor, using 3D LUT files.
 
-This framework is what powers the Lochkamera macOS app.
+This framework is what powers the [Lochkamera](http://www.lochkamera.co) macOS app.
 
 ## Installation
 
