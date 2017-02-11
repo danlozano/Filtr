@@ -66,16 +66,24 @@ public enum EffectFilterType: String {
     
     #if os(OSX)
     
-    public var thumbnail: NSImage? {
+    public var mediumThumbnail: NSImage? {
         return bundle.image(forResource: "\(self.rawValue)-medium")
     }
-    
+
+    public var smallThumbnail: NSImage? {
+        return bundle.image(forResource: "\(self.rawValue)-small")
+    }
+
     #else
 
-    public var thumbnail: UIImage? {
+    public var mediumThumbnail: UIImage? {
         return UIImage(named: "\(self.rawValue)-medium", in: bundle, compatibleWith: nil)
     }
-    
+
+    public var smallThumbnail: UIImage? {
+        return UIImage(named: "\(self.rawValue)-small", in: bundle, compatibleWith: nil)
+    }
+
     #endif
 
 }
