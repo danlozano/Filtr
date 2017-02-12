@@ -156,7 +156,7 @@
 		062C4ACA1E28591F00807886 /* extra8.fcube */ = {isa = PBXFileReference; lastKnownFileType = file; name = extra8.fcube; path = "Resources/Effect Filters/extra8.fcube"; sourceTree = "<group>"; };
 		062C4ACB1E28591F00807886 /* extra9.fcube */ = {isa = PBXFileReference; lastKnownFileType = file; name = extra9.fcube; path = "Resources/Effect Filters/extra9.fcube"; sourceTree = "<group>"; };
 		062C4ACC1E28591F00807886 /* extra10.fcube */ = {isa = PBXFileReference; lastKnownFileType = file; name = extra10.fcube; path = "Resources/Effect Filters/extra10.fcube"; sourceTree = "<group>"; };
-		0639FF001E4FE6A60043B08F /* FilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		0639FF001E4FE6A60043B08F /* FilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterView.swift; path = Classes/FilterView.swift; sourceTree = "<group>"; };
 		06506A2E1D2760A1009BEB86 /* ImageConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageConverter.swift; path = Classes/ImageConverter.swift; sourceTree = "<group>"; };
 		069A0FD81D1A194A00357319 /* Filtr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Filtr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		069A0FE81D1A196A00357319 /* Filtr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Filtr.framework; sourceTree = BUILT_PRODUCTS_DIR; };

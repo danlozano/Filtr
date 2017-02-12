@@ -10,13 +10,13 @@ import UIKit
 
 public class FilterView: UIView {
 
-    var filter: EffectFilterType = .none {
+    public var filter: EffectFilterType = .none {
         didSet {
             updateView()
         }
     }
 
-    weak var filterLabel: UILabel!
+    public weak var filterLabel: UILabel!
 
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -30,9 +30,11 @@ public class FilterView: UIView {
 
     func setup() {
         layer.cornerRadius = 2.0
-        filterLabel = UILabel(frame: self.frame)
-        filterLabel.textColor = .white
-        addSubview(filterLabel)
+        let label = UILabel(frame: self.frame)
+        label.textColor = .white
+        label.textAlignment = .center
+        addSubview(label)
+        filterLabel = label
     }
 
     func updateView() {
