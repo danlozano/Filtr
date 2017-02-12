@@ -32,6 +32,9 @@
 		062C4AE31E28591F00807886 /* extra8.fcube in Resources */ = {isa = PBXBuildFile; fileRef = 062C4ACA1E28591F00807886 /* extra8.fcube */; };
 		062C4AE41E28591F00807886 /* extra9.fcube in Resources */ = {isa = PBXBuildFile; fileRef = 062C4ACB1E28591F00807886 /* extra9.fcube */; };
 		062C4AE51E28591F00807886 /* extra10.fcube in Resources */ = {isa = PBXBuildFile; fileRef = 062C4ACC1E28591F00807886 /* extra10.fcube */; };
+		0639FF011E4FE6A60043B08F /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0639FF001E4FE6A60043B08F /* FilterView.swift */; };
+		0639FF021E4FE6A60043B08F /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0639FF001E4FE6A60043B08F /* FilterView.swift */; };
+		0639FF031E4FE6A60043B08F /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0639FF001E4FE6A60043B08F /* FilterView.swift */; };
 		063DFA841E2B07FD00FB4F13 /* blackWhite1.fcube in Resources */ = {isa = PBXBuildFile; fileRef = 062C4AB41E28591F00807886 /* blackWhite1.fcube */; };
 		063DFA851E2B07FD00FB4F13 /* blackWhite2.fcube in Resources */ = {isa = PBXBuildFile; fileRef = 062C4AB51E28591F00807886 /* blackWhite2.fcube */; };
 		063DFA861E2B07FD00FB4F13 /* blackWhite3.fcube in Resources */ = {isa = PBXBuildFile; fileRef = 062C4AB61E28591F00807886 /* blackWhite3.fcube */; };
@@ -153,6 +156,7 @@
 		062C4ACA1E28591F00807886 /* extra8.fcube */ = {isa = PBXFileReference; lastKnownFileType = file; name = extra8.fcube; path = "Resources/Effect Filters/extra8.fcube"; sourceTree = "<group>"; };
 		062C4ACB1E28591F00807886 /* extra9.fcube */ = {isa = PBXFileReference; lastKnownFileType = file; name = extra9.fcube; path = "Resources/Effect Filters/extra9.fcube"; sourceTree = "<group>"; };
 		062C4ACC1E28591F00807886 /* extra10.fcube */ = {isa = PBXFileReference; lastKnownFileType = file; name = extra10.fcube; path = "Resources/Effect Filters/extra10.fcube"; sourceTree = "<group>"; };
+		0639FF001E4FE6A60043B08F /* FilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		06506A2E1D2760A1009BEB86 /* ImageConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageConverter.swift; path = Classes/ImageConverter.swift; sourceTree = "<group>"; };
 		069A0FD81D1A194A00357319 /* Filtr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Filtr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		069A0FE81D1A196A00357319 /* Filtr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Filtr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,6 +266,7 @@
 		069A10311D1AF82600357319 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0639FF001E4FE6A60043B08F /* FilterView.swift */,
 				069A10031D1A1AFB00357319 /* LUTConverter.swift */,
 				06506A2E1D2760A1009BEB86 /* ImageConverter.swift */,
 				069A10041D1A1AFB00357319 /* String+Path.swift */,
@@ -562,6 +567,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0639FF011E4FE6A60043B08F /* FilterView.swift in Sources */,
 				0690580A1E25F75100EF8E5D /* Filtr.swift in Sources */,
 				0690580B1E25F75100EF8E5D /* Constants.swift in Sources */,
 				0690580C1E25F75100EF8E5D /* FilterStack.swift in Sources */,
@@ -579,6 +585,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0639FF021E4FE6A60043B08F /* FilterView.swift in Sources */,
 				069A10461D1B3BD100357319 /* FilterStack.swift in Sources */,
 				069A10681D1C4D3300357319 /* FadeFilter.swift in Sources */,
 				069A103A1D1AFC2700357319 /* EffectFilter.swift in Sources */,
@@ -596,6 +603,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0639FF031E4FE6A60043B08F /* FilterView.swift in Sources */,
 				069A10471D1B3BD100357319 /* FilterStack.swift in Sources */,
 				069A10691D1C4D3300357319 /* FadeFilter.swift in Sources */,
 				069A103B1D1AFC2800357319 /* EffectFilter.swift in Sources */,
