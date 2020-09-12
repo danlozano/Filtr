@@ -22,9 +22,9 @@ public class EffectFilter: CIFilter {
     
     public let type: EffectFilterType
 
-    public var inputImage: CIImage?
+    @objc dynamic var inputImage: CIImage?
 
-    public var inputIntensity: Float = 1.0 {
+    @objc dynamic var inputIntensity: Float = 1.0 {
         didSet{
             colorCubeData = nil
         }
